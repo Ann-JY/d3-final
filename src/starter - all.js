@@ -13,7 +13,7 @@ const tooltip = d3
   .attr("class", "tooltip")
   .style("position", "absolute")
   .style("display", "none")
-  .style("background-color", "white")
+  .style("background-color", "none")
   // .style("border", "1px solid #000000")
   // .style("padding", "5px")
   // .style("border-radius", "5px")

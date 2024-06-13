@@ -101,7 +101,7 @@ body {
 .tooltip {
   position: absolute;
   display: none;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   /* border: 1px solid #858585;
   padding: 8px; */
   /* border-radius: 8px;
