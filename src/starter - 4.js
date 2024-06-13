@@ -67,7 +67,10 @@ const line = d3
 let data = [];
 let points = [];
 
-d3.json("data/cherryblossom2.json").then((raw_data) => {
+// d3.json("data/cherryblossom2.json").then((raw_data) => {
+// d3.json("data/forsythia.json").then((raw_data) => {
+// d3.json("data/azalea.json").then((raw_data) => {
+d3.json("data/all.json").then((raw_data) => {
   const data = raw_data
     .map((d) => {
       return {
@@ -136,7 +139,7 @@ d3.json("data/cherryblossom2.json").then((raw_data) => {
       .attr("cy", (d) => yScale(d[city]))
       .attr("r", 3)
       .style("fill", color)
-      .style("opacity", 0.5)
+      .style("opacity", 0.3)
       .on("mousemove", function (event, d) {
         tooltip
           .style("left", event.pageX + 5 + "px")
@@ -144,11 +147,17 @@ d3.json("data/cherryblossom2.json").then((raw_data) => {
           .style("display", "block")
           .html(`${className}, ${formatDate(d[city])}`);
 
-        d3.select(this).style("stroke-width", 3).attr("stroke", "#e05780");
+        d3.select(this)
+          .style("stroke-width", 3)
+          .attr("stroke", "#e05780")
+          .style("opacity", 1);
       })
       .on("mouseout", function () {
         tooltip.style("display", "none");
-        d3.select(this).style("stroke-width", 1).attr("stroke", "#fff");
+        d3.select(this)
+          .style("stroke-width", 1)
+          .attr("stroke", "#fff")
+          .style("opacity", 0.3);
       });
   };
 
@@ -163,110 +172,6 @@ d3.json("data/cherryblossom2.json").then((raw_data) => {
 
   addLinearRegression(points, svg);
 
-  //   // 광주
-  // svg
-  //   .selectAll(".dot-daegu")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-daegu")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.daegu))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
-  // // 대구
-  // svg
-  //   .selectAll(".dot-gwangju")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-gwangju")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.gwangju))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
-  // // 대전
-  // svg
-  //   .selectAll(".dot-daejeon")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-daejeon")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.daejeon))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
-  // // 서울
-  // svg
-  //   .selectAll(".dot-seoul")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-seoul")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.seoul))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
-  // // 부산
-  // svg
-  //   .selectAll(".dot-busan")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-busan")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.busan))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
-  // // 울산
-  // svg
-  //   .selectAll(".dot-ulsan")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-ulsan")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.ulsan))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
-  // // 인천
-  // svg
-  //   .selectAll(".dot-incheon")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-incheon")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.incheon))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
-  // // 제주
-  // svg
-  //   .selectAll(".dot-jeju")
-  //   .data(data)
-  //   .enter()
-  //   .append("circle")
-  //   .attr("class", "dot-jeju")
-  //   .attr("cx", (d) => xScale(d.year))
-  //   .attr("cy", (d) => yScale(d.jeju))
-  //   .attr("r", 3)
-  //   .style("fill", "#ff9ebb")
-  //   .style("opacity", 0.5);
-
   //평균
   svg
     .append("path")
@@ -274,28 +179,28 @@ d3.json("data/cherryblossom2.json").then((raw_data) => {
     .attr("class", "average")
     .attr("fill", "none")
     .attr("stroke", "#e05780")
-    .attr("stroke-width", 3)
+    .attr("stroke-width", 2.5)
     .attr("d", line)
-    .style("opacity", 0.7)
-    .on("mousemove", function (event, d) {
-      tooltip
-        .style("left", event.pageX + 5 + "px")
-        .style("top", event.pageY - 25 + "px")
-        .style("display", "block")
-        .html(`average`);
+    .style("opacity", 0.7);
+  // .on("mousemove", function (event, d) {
+  //   tooltip
+  //     .style("left", event.pageX + 5 + "px")
+  //     .style("top", event.pageY - 25 + "px")
+  //     .style("display", "block")
+  //     .html(`average`);
 
-      d3.select(this).attr("stroke-width", 5);
-    })
-    .on("mouseout", function () {
-      svg.select(".hover-text").remove();
-      svg.select(".tooltip-box").remove();
+  //   d3.select(this).attr("stroke-width", 5);
+  // })
+  // .on("mouseout", function () {
+  //   svg.select(".hover-text").remove();
+  //   svg.select(".tooltip-box").remove();
 
-      d3.select(this).attr("stroke-width", 3);
-    });
+  //   d3.select(this).attr("stroke-width", 3);
+  // });
 
   points = data.map((d) => ({
-    x: xScale(d.year), // 수정: points 데이터 생성
-    y: yScale(d.avg), // 수정: points 데이터 생성
+    x: xScale(d.year),
+    y: yScale(d.avg),
   }));
 
   addLinearRegression(points, svg);
@@ -337,80 +242,90 @@ const addLinearRegression = (pointsData, svg) => {
     .attr("d", line);
 };
 
-//마우스오버 이벤트
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+// 평균 범례
+const legendAvg = svg
+  .append("g")
+  .attr("class", "legend")
+  .attr("transform", `translate(${width - margin.right - 30}, ${margin.top})`);
 
-//   svg
-//     .selectAll(
-//       ".gwangju, .daegu, .daejeon, .busan, .seoul, .ulsan, .incheon, .jeju, .average"
-//     )
-//     .on("mouseover", function (event, d) {
-//       const [mouseX, mouseY] = d3.pointer(event, this);
+legendAvg
+  .append("line")
+  .attr("x1", -40)
+  .attr("y1", -4)
+  .attr("x2", -10)
+  .attr("y2", -4)
+  .attr("stroke", "#e05780")
+  .attr("stroke-width", 2.5);
 
-//       const className = d3.select(this).attr("class");
+legendAvg
+  .append("text")
+  .attr("x", -5)
+  .attr("y", 0)
+  .attr("text-anchor", "start")
+  .style("fill", "#000000")
+  .text("평균값")
+  .style("font-size", "12px");
 
-//       svg
-//         .append("rect")
-//         .attr("class", "tooltip-box")
-//         .attr("x", mouseX + 5)
-//         .attr("y", mouseY - 25)
-//         .attr("width", 70)
-//         .attr("height", 25)
-//         .style("fill", "white")
-//         .style("stroke", "#e05780")
-//         .style("opacity", 1)
-//         .attr("rx", 5)
-//         .attr("ry", 5);
+// 추세선 범례
+const legendTrendline = svg
+  .append("g")
+  .attr("class", "legend")
+  .attr(
+    "transform",
+    `translate(${width - margin.right - 30}, ${margin.top + 20})`
+  );
 
-//       svg
-//         .append("text")
-//         .attr("class", "hover-text")
-//         .attr("x", mouseX + 40)
-//         .attr("y", mouseY - 12)
-//         .attr("text-anchor", "middle")
-//         .attr("alignment-baseline", "middle")
-//         .style("fill", "#000000")
-//         .text(className);
+legendTrendline
+  .append("line")
+  .attr("x1", -40)
+  .attr("y1", -4)
+  .attr("x2", -10)
+  .attr("y2", -4)
+  .attr("stroke", "#888")
+  .attr("stroke-width", 1)
+  .style("stroke-dasharray", "5, 5");
 
-//       d3.select(this).attr("stroke-width", 5);
-//     })
-//     .on("mouseout", function () {
-//       svg.select(".hover-text").remove();
-//       svg.select(".tooltip-box").remove();
+legendTrendline
+  .append("text")
+  .attr("x", -5)
+  .attr("y", 0)
+  .attr("text-anchor", "start")
+  .style("fill", "#000000")
+  .text("추세선")
+  .style("font-size", "12px");
 
-//       d3.select(this).attr("stroke-width", 3);
-//     });
+// ////////////////////////////////////////////////////////////////////
+// ////////////////////////////  Resize  //////////////////////////////수정필요
+// window.addEventListener("resize", () => {
+//   //  width, height updated
+//   width = parseInt(d3.select("#svg-container").style("width"));
+//   height = parseInt(d3.select("#svg-container").style("height"));
+
+//   //  scale updated
+//   xScale.range([margin.left, width - margin.right]);
+//   yScale.range([height - margin.bottom, margin.top]);
+
+//   //  line updated
+//   line.x((d) => xScale(d.date_parsed)).y((d) => yScale(d.price));
+
+//   //  path updated
+//   path.attr("d", line);
+
+//   // circle
+//   const lastValue = data[data.length - 1];
+
+//   circle
+//     .attr("cx", xScale(lastValue.date_parsed))
+//     .attr("cy", yScale(lastValue.price));
+
+//   //  axis updated
+//   d3.select(".x-axis")
+//     .attr("transform", `translate(0,${height - margin.bottom})`)
+//     .call(xAxis);
+
+//   d3.select(".y-axis")
+//     .attr("transform", `translate(${margin.left}, 0)`)
+//     .call(yAxis);
 // });
-
-////////////////////////////////////////////////////////////////////
-////////////////////////////  Resize  //////////////////////////////수정필요
-window.addEventListener("resize", () => {
-  //  width, height updated
-  width = parseInt(d3.select("#svg-container").style("width"));
-  height = parseInt(d3.select("#svg-container").style("height"));
-
-  //  scale updated
-  xScale.range([margin.left, width - margin.right]);
-  yScale.range([height - margin.bottom, margin.top]);
-
-  //  line updated
-  line.x((d) => xScale(d.date_parsed)).y((d) => yScale(d.price));
-
-  //  path updated
-  path.attr("d", line);
-
-  // circle
-  const lastValue = data[data.length - 1];
-
-  circle
-    .attr("cx", xScale(lastValue.date_parsed))
-    .attr("cy", yScale(lastValue.price));
-
-  //  axis updated
-  d3.select(".x-axis")
-    .attr("transform", `translate(0,${height - margin.bottom})`)
-    .call(xAxis);
-
-  d3.select(".y-axis")
-    .attr("transform", `translate(${margin.left}, 0)`)
-    .call(yAxis);
-});

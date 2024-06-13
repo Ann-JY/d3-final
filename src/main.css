@@ -1,62 +1,110 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 기본 스타일 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Summary 스타일 */
 .summary {
-  margin-top: 100px;
-  width: 95%;
-  max-width: 830px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* GLOBAL TEMPERATURE */
-.summary .b-type {
-  font-size: 25px;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid #e0e0e0;
 }
 
-.summary .b-type span {
+/* .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+} */
+
+.b-type {
+  font-size: 1.75rem;
+  font-weight: 700;
   color: #000000;
+  margin-top: 5px;
 }
 
-.summary .b-price {
-  margin-top: 3px;
-  text-align: center;
+.b-price {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 10px;
 }
 
-.summary .b-price #price {
-  font-size: 10px;
-  font-weight: 500;
-}
-/* departure from ~ */
-.summary .b-price #unit {
-  font-size: 15px;
-  color: #888;
-  font-weight: 400;
-  text-transform: uppercase;
+/* .controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+} */
+
+.options-label {
+  font-size: 1rem;
+  color: #636363;
+  margin-top: 5px;
+  /* 왜안바껴 */
 }
 
-.summary .b-date {
-  font-size: 16px;
-  color: #888;
-  margin-top: 3px;
-}
+/* .options-select {
+  padding: 8px 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ecf0f1;
+  color: #34495e;
+  transition: border-color 0.3s;
+} */
 
+/* .options-select:focus {
+  border-color: #3498db;
+  outline: none;
+} */
+
+/* .b-date {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #7f8c8d;
+} */
+/* 봄꽃 선택창 아래 마진 */
+
+/* SVG container 스타일 */
 #svg-container {
-  /* border: 1px solid red; */
-  width: 95%;
-  max-width: 830px;
-  height: 480px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  border: 1px solid #e0e0e0;
+}
+
+/* 툴팁 스타일 */
+.tooltip {
+  position: absolute;
+  display: none;
+  background-color: white;
+  /* border: 1px solid #858585;
+  padding: 8px; */
+  /* border-radius: 8px;
+  color: #757575;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }

@@ -17,10 +17,16 @@
   <body>
     <!-- Summary -->
     <div class="summary">
-      <div class="b-type">연도별, 지역별 봄꽃 개화시기</div>
+      <div class="b-type">전국 봄꽃 개화시기</div>
       <div class="b-price">
-        <span id="price"></span> <span id="unit">1980-2020</span>
+        <span id="price"></span> <span id="unit">1980-2024</span>
       </div>
+      <label for="options-label" class="options-label">봄꽃 선택 &nbsp; </label>
+      <select id="options">
+        <option value="cherryblossom">벚꽃</option>
+        <option value="forsythia">개나리</option>
+        <option value="azalea">진달래</option>
+      </select>
       <div class="b-date" id="date"></div>
     </div>
 
@@ -28,7 +34,10 @@
     <div id="svg-container"></div>
     <!-- svg에 모든 코드 넣는 중 -->
     <!-- Absolute path for Vite -->
-    <script type="module" src="/src/starter.js"></script>
+    <!-- <script type="module" src="/src/starter - 4.js"></script> -->
+    <script type="module" src="/src/starter - all.js"></script>
+    <!-- <script type="module" src="/src/starter - 2.js"></script> -->
+    <!-- <script type="module" src="/src/starter - 3.js"></script> -->
     <!-- 최종코드(인터렉션)는 아래, 위에는 연습용 -->
     <!-- <script type="module" src="/src/viz_interaction.js"></script> -->
   </body>
